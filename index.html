@@ -2,64 +2,581 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>SD Negeri Lambada Klieng</title>
-  <meta http-equiv="refresh" content="0; url=https://chairulamri-casa.github.io/Amanah/index8.html?sekolah=sdn-lambada-klieng">
+  <meta name="description" content="Website resmi SD Negeri Lambada Klieng, Kecamatan Baitussalam, Aceh Besar">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --bg: #f5f7fa;
+      --bg2: #ffffff;
+      --fg: #1a2332;
+      --fg2: #4a5568;
+      --accent: #1a56a0;
+      --accent2: #e8f0fb;
+      --accent3: #c8192b;
+      --border: #e2e8f0;
+      --shadow: 0 2px 16px rgba(26,86,160,0.08);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #0f1923; --bg2: #1a2535; --fg: #e8edf5; --fg2: #94a3b8;
+        --accent: #3b82f6; --accent2: #1e2d45; --accent3: #f87171;
+        --border: #2d3f55; --shadow: 0 2px 16px rgba(0,0,0,0.3);
+        color-scheme: dark;
+      }
+    }
+    :root[data-theme="dark"] {
+      --bg: #0f1923; --bg2: #1a2535; --fg: #e8edf5; --fg2: #94a3b8;
+      --accent: #3b82f6; --accent2: #1e2d45; --accent3: #f87171;
+      --border: #2d3f55; --shadow: 0 2px 16px rgba(0,0,0,0.3);
+      color-scheme: dark;
+    }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      min-height: 100vh;
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.6;
+    }
+
+    /* HEADER */
+    header {
+      background: var(--accent);
+      color: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+    }
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0.75rem max(16px, env(safe-area-inset-left, 0px));
       display: flex;
       align-items: center;
-      justify-content: center;
-      background: #0f2a4a;
-      font-family: system-ui, -apple-system, sans-serif;
-      color: #fff;
+      gap: 1rem;
+      justify-content: space-between;
     }
-    .container {
-      text-align: center;
-      padding: 2rem;
-    }
-    .logo {
-      width: 80px;
-      height: 80px;
-      margin: 0 auto 1.5rem;
+    .header-left { display: flex; align-items: center; gap: 0.75rem; }
+    .header-logo {
+      width: 44px; height: 44px;
       background: #fff;
       border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+    .header-title { font-size: 1rem; font-weight: 700; line-height: 1.2; }
+    .header-sub { font-size: 0.72rem; opacity: 0.8; }
+    .btn-login {
+      background: #fff;
+      color: var(--accent);
+      border: none;
+      padding: 0.5rem 1.1rem;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: opacity 0.2s;
+    }
+    .btn-login:hover { opacity: 0.85; }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, #1a56a0 0%, #0d3a73 60%, #c8192b 100%);
+      color: #fff;
+      padding: 4rem max(16px, env(safe-area-inset-left, 0px));
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-content { position: relative; max-width: 700px; margin: 0 auto; }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 0.3rem 0.9rem;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .hero h1 {
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+      text-wrap: balance;
+    }
+    .hero p {
+      font-size: 1rem;
+      opacity: 0.85;
+      margin-bottom: 2rem;
+    }
+    .hero-actions { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: #fff;
+      color: var(--accent);
+      padding: 0.7rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
+    .btn-outline {
+      background: transparent;
+      color: #fff;
+      border: 2px solid rgba(255,255,255,0.6);
+      padding: 0.7rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .btn-outline:hover { background: rgba(255,255,255,0.1); }
+
+    /* STATS BAR */
+    .stats-bar {
+      background: var(--bg2);
+      border-bottom: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+    .stats-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 max(16px, env(safe-area-inset-left, 0px));
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+    .stat-item {
+      padding: 1.2rem 1rem;
+      text-align: center;
+      flex: 1;
+      min-width: 120px;
+    }
+    .stat-num { font-size: 1.6rem; font-weight: 800; color: var(--accent); }
+    .stat-label { font-size: 0.75rem; color: var(--fg2); font-weight: 500; }
+
+    /* SECTION */
+    section { padding: 3rem max(16px, env(safe-area-inset-left, 0px)); }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-title {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--fg);
+      margin-bottom: 0.4rem;
+    }
+    .section-sub { color: var(--fg2); font-size: 0.9rem; margin-bottom: 2rem; }
+    .section-title-line {
       display: flex;
       align-items: center;
-      justify-content: center;
-      font-size: 2.5rem;
+      gap: 0.75rem;
+      margin-bottom: 0.4rem;
     }
-    h1 { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.4rem; }
-    p { font-size: 0.95rem; opacity: 0.7; margin-bottom: 1.5rem; }
-    .spinner {
-      width: 32px; height: 32px;
-      border: 3px solid rgba(255,255,255,0.2);
-      border-top-color: #fff;
+    .title-accent {
+      width: 4px; height: 1.4rem;
+      background: var(--accent3);
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    /* PROFIL CARDS */
+    .profil-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    @media (max-width: 600px) { .profil-grid { grid-template-columns: 1fr; } }
+    .profil-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+    }
+    .profil-card h3 {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    .profil-row {
+      display: flex;
+      gap: 0.75rem;
+      margin-bottom: 0.6rem;
+      font-size: 0.88rem;
+    }
+    .profil-row .label { color: var(--fg2); min-width: 90px; flex-shrink: 0; }
+    .profil-row .value { color: var(--fg); font-weight: 500; }
+
+    /* VISI MISI */
+    .vm-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    @media (max-width: 640px) { .vm-grid { grid-template-columns: 1fr; } }
+    .vm-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+    }
+    .vm-card.visi { border-top: 4px solid var(--accent); }
+    .vm-card.misi { border-top: 4px solid var(--accent3); }
+    .vm-card h3 {
+      font-size: 1rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .vm-card p { font-size: 0.9rem; color: var(--fg2); line-height: 1.7; }
+    .vm-card ul { list-style: none; }
+    .vm-card ul li {
+      font-size: 0.88rem;
+      color: var(--fg2);
+      padding: 0.4rem 0;
+      padding-left: 1.2rem;
+      position: relative;
+      border-bottom: 1px solid var(--border);
+    }
+    .vm-card ul li:last-child { border-bottom: none; }
+    .vm-card ul li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent3);
+      font-weight: 700;
+    }
+
+    /* PROGRAM UNGGULAN */
+    .program-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    .program-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem;
+      text-align: center;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s;
+    }
+    .program-card:hover { transform: translateY(-3px); }
+    .program-icon { font-size: 2rem; margin-bottom: 0.6rem; }
+    .program-card h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.3rem; }
+    .program-card p { font-size: 0.78rem; color: var(--fg2); }
+
+    /* LAYANAN */
+    .layanan-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+    .layanan-card {
+      background: var(--accent2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-decoration: none;
+      color: var(--fg);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .layanan-card:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+    .layanan-icon { font-size: 1.8rem; flex-shrink: 0; }
+    .layanan-card h4 { font-size: 0.9rem; font-weight: 700; }
+    .layanan-card p { font-size: 0.78rem; color: var(--fg2); }
+
+    /* KEPALA SEKOLAH */
+    .kepsek-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+      box-shadow: var(--shadow);
+      max-width: 600px;
+    }
+    @media (max-width: 500px) { .kepsek-card { flex-direction: column; text-align: center; } }
+    .kepsek-avatar {
+      width: 80px; height: 80px;
       border-radius: 50%;
-      margin: 0 auto 1rem;
-      animation: spin 0.8s linear infinite;
+      background: linear-gradient(135deg, var(--accent), #0d3a73);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem;
+      flex-shrink: 0;
     }
-    @keyframes spin { to { transform: rotate(360deg); } }
-    a { color: #7eb8f7; font-size: 0.85rem; }
+    .kepsek-info h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: 0.2rem; }
+    .kepsek-info .jabatan { font-size: 0.82rem; color: var(--accent); font-weight: 600; margin-bottom: 0.5rem; }
+    .kepsek-info p { font-size: 0.85rem; color: var(--fg2); font-style: italic; }
+
+    /* FOOTER */
+    footer {
+      background: #0d1f35;
+      color: #94a3b8;
+      padding: 2rem max(16px, env(safe-area-inset-left, 0px));
+      text-align: center;
+    }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    footer h3 { color: #fff; font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
+    footer p { font-size: 0.82rem; line-height: 1.8; }
+    .footer-divider { border: none; border-top: 1px solid #1e3a5f; margin: 1.5rem 0; }
+    .footer-bottom { font-size: 0.75rem; opacity: 0.6; }
+
+    /* BG ALT */
+    .bg-alt { background: var(--bg2); }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="logo">🏫</div>
-    <h1>SD Negeri Lambada Klieng</h1>
-    <p>Aceh Besar</p>
-    <div class="spinner"></div>
-    <p>Mengalihkan ke halaman sekolah...</p>
-    <a href="https://chairulamri-casa.github.io/Amanah/index8.html?sekolah=sdn-lambada-klieng">
-      Klik di sini jika tidak dialihkan otomatis
-    </a>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="header-left">
+      <div class="header-logo">🏫</div>
+      <div>
+        <div class="header-title">SD Negeri Lambada Klieng</div>
+        <div class="header-sub">Kec. Baitussalam · Aceh Besar</div>
+      </div>
+    </div>
+    <a href="https://chairulamri-casa.github.io/Amanah/index8.html?sekolah=sdn-lambada-klieng" class="btn-login">Portal Sekolah</a>
   </div>
-  <script>
-    setTimeout(function() {
-      window.location.href = "https://chairulamri-casa.github.io/Amanah/index8.html?sekolah=sdn-lambada-klieng";
-    }, 500);
-  </script>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">🎓 Sekolah Dasar Negeri</div>
+    <h1>SD Negeri Lambada Klieng</h1>
+    <p>Membentuk generasi cerdas, berkarakter, dan berprestasi<br>di Kecamatan Baitussalam, Aceh Besar</p>
+    <div class="hero-actions">
+      <a href="https://chairulamri-casa.github.io/Amanah/index8.html?sekolah=sdn-lambada-klieng" class="btn-primary">🔐 Masuk Portal Sekolah</a>
+      <a href="#profil" class="btn-outline">Lihat Profil →</a>
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">6</div>
+      <div class="stat-label">Rombongan Belajar</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">SD</div>
+      <div class="stat-label">Jenjang Pendidikan</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">Negeri</div>
+      <div class="stat-label">Status Sekolah</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">Aceh Besar</div>
+      <div class="stat-label">Kabupaten</div>
+    </div>
+  </div>
+</div>
+
+<!-- PROFIL -->
+<section id="profil">
+  <div class="section-inner">
+    <div class="section-title-line">
+      <div class="title-accent"></div>
+      <h2 class="section-title">Profil Sekolah</h2>
+    </div>
+    <p class="section-sub">Informasi resmi SD Negeri Lambada Klieng</p>
+    <div class="profil-grid">
+      <div class="profil-card">
+        <h3>📋 Identitas Sekolah</h3>
+        <div class="profil-row"><span class="label">Nama</span><span class="value">SD Negeri Lambada Klieng</span></div>
+        <div class="profil-row"><span class="label">Status</span><span class="value">Negeri</span></div>
+        <div class="profil-row"><span class="label">Jenjang</span><span class="value">Sekolah Dasar (SD)</span></div>
+        <div class="profil-row"><span class="label">NPSN</span><span class="value">-</span></div>
+        <div class="profil-row"><span class="label">Akreditasi</span><span class="value">-</span></div>
+      </div>
+      <div class="profil-card">
+        <h3>📍 Lokasi & Kontak</h3>
+        <div class="profil-row"><span class="label">Alamat</span><span class="value">Jl. Laksamana Malahayati KM. 10 Lambada Lhok</span></div>
+        <div class="profil-row"><span class="label">Kecamatan</span><span class="value">Baitussalam</span></div>
+        <div class="profil-row"><span class="label">Kabupaten</span><span class="value">Aceh Besar</span></div>
+        <div class="profil-row"><span class="label">Provinsi</span><span class="value">Aceh</span></div>
+        <div class="profil-row"><span class="label">Website</span><span class="value">sdnlambadaklieng.sch.id</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KEPALA SEKOLAH -->
+<section class="bg-alt">
+  <div class="section-inner">
+    <div class="section-title-line">
+      <div class="title-accent"></div>
+      <h2 class="section-title">Kepala Sekolah</h2>
+    </div>
+    <p class="section-sub">Pimpinan SD Negeri Lambada Klieng</p>
+    <div class="kepsek-card">
+      <div class="kepsek-avatar">👩‍💼</div>
+      <div class="kepsek-info">
+        <h3>Sri Wahyuni, S.Pd., M.Pd.</h3>
+        <div class="jabatan">Kepala SD Negeri Lambada Klieng</div>
+        <p>"Bersama membangun sekolah yang unggul, berkarakter, dan berprestasi untuk generasi Aceh yang gemilang."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISI MISI -->
+<section>
+  <div class="section-inner">
+    <div class="section-title-line">
+      <div class="title-accent"></div>
+      <h2 class="section-title">Visi & Misi</h2>
+    </div>
+    <p class="section-sub">Landasan arah pengembangan SD Negeri Lambada Klieng</p>
+    <div class="vm-grid">
+      <div class="vm-card visi">
+        <h3>🎯 Visi</h3>
+        <p>Terwujudnya peserta didik yang cerdas, beriman, berkarakter mulia, dan berwawasan lingkungan dalam bingkai budaya Aceh.</p>
+      </div>
+      <div class="vm-card misi">
+        <h3>📌 Misi</h3>
+        <ul>
+          <li>Menyelenggarakan pembelajaran yang berkualitas dan berkarakter</li>
+          <li>Menumbuhkan nilai keimanan dan ketaqwaan kepada Allah SWT</li>
+          <li>Mengembangkan potensi peserta didik secara optimal</li>
+          <li>Menciptakan lingkungan sekolah yang bersih, indah, dan nyaman</li>
+          <li>Menjalin kerjasama yang harmonis dengan masyarakat</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAM UNGGULAN -->
+<section class="bg-alt">
+  <div class="section-inner">
+    <div class="section-title-line">
+      <div class="title-accent"></div>
+      <h2 class="section-title">Program Unggulan</h2>
+    </div>
+    <p class="section-sub">Kegiatan dan program andalan sekolah</p>
+    <div class="program-grid">
+      <div class="program-card">
+        <div class="program-icon">📖</div>
+        <h4>Literasi & Numerasi</h4>
+        <p>Program pembiasaan membaca dan berhitung setiap hari</p>
+      </div>
+      <div class="program-card">
+        <div class="program-icon">🕌</div>
+        <h4>Pembiasaan Islami</h4>
+        <p>Shalat dhuha, tahfidz, dan kultum harian</p>
+      </div>
+      <div class="program-card">
+        <div class="program-icon">🏆</div>
+        <h4>Olimpiade Sains</h4>
+        <p>Pembinaan siswa berprestasi tingkat kecamatan dan kabupaten</p>
+      </div>
+      <div class="program-card">
+        <div class="program-icon">🌿</div>
+        <h4>Sekolah Adiwiyata</h4>
+        <p>Program peduli dan berbudaya lingkungan hidup</p>
+      </div>
+      <div class="program-card">
+        <div class="program-icon">💻</div>
+        <h4>Pembelajaran Digital</h4>
+        <p>Integrasi teknologi dalam proses belajar mengajar</p>
+      </div>
+      <div class="program-card">
+        <div class="program-icon">🎨</div>
+        <h4>Seni & Budaya Aceh</h4>
+        <p>Pelestarian budaya lokal melalui ekstrakurikuler seni</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LAYANAN -->
+<section>
+  <div class="section-inner">
+    <div class="section-title-line">
+      <div class="title-accent"></div>
+      <h2 class="section-title">Layanan Digital</h2>
+    </div>
+    <p class="section-sub">Akses layanan sekolah secara online</p>
+    <div class="layanan-grid">
+      <a href="https://chairulamri-casa.github.io/Amanah/index8.html?sekolah=sdn-lambada-klieng" class="layanan-card">
+        <div class="layanan-icon">🏫</div>
+        <div>
+          <h4>Portal Sekolah (Amanah)</h4>
+          <p>Absensi, kerja harian, dan manajemen sekolah</p>
+        </div>
+      </a>
+      <a href="https://chairulamri-casa.github.io/Amanah/index8.html?sekolah=sdn-lambada-klieng&tab=pmb" class="layanan-card">
+        <div class="layanan-icon">📝</div>
+        <div>
+          <h4>Pendaftaran Siswa Baru</h4>
+          <p>Daftar online penerimaan murid baru (PPDB)</p>
+        </div>
+      </a>
+      <a href="https://chairulamri-casa.github.io/Amanah/index8.html?sekolah=sdn-lambada-klieng&tab=berita" class="layanan-card">
+        <div class="layanan-icon">📢</div>
+        <div>
+          <h4>Berita & Pengumuman</h4>
+          <p>Informasi terkini dari sekolah</p>
+        </div>
+      </a>
+      <a href="https://chairulamri-casa.github.io/Amanah/index8.html?sekolah=sdn-lambada-klieng" class="layanan-card">
+        <div class="layanan-icon">👨‍👩‍👧</div>
+        <div>
+          <h4>Layanan Orang Tua</h4>
+          <p>Pantau perkembangan dan kehadiran siswa</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <h3>SD Negeri Lambada Klieng</h3>
+    <p>
+      Jl. Laksamana Malahayati KM. 10 Lambada Lhok<br>
+      Kecamatan Baitussalam, Kabupaten Aceh Besar, Provinsi Aceh
+    </p>
+    <hr class="footer-divider">
+    <p class="footer-bottom">© 2026 SD Negeri Lambada Klieng · sdnlambadaklieng.sch.id</p>
+  </div>
+</footer>
+
 </body>
 </html>
